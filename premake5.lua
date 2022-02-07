@@ -33,7 +33,7 @@ project "GLFW"
         systemversion "latest"
         staticruntime "on"
         
-        files
+    files
     {
         "src/win32_init.c",
         "src/win32_module.c",
@@ -49,11 +49,16 @@ project "GLFW"
         "src/osmesa_context.c"
     }
 
-		defines 
-		{ 
-            "_GLFW_WIN32",
-            "_CRT_SECURE_NO_WARNINGS"
-		}
+	defines 
+	{ 
+        "_GLFW_WIN32",
+        "_CRT_SECURE_NO_WARNINGS"
+	}
 
-    filter { "system:windows", "configurations:Release" }
-        buildoptions "/MT"
+    filter "configurations:Debug"
+        runtime "Debug"
+        symbols "on"
+    
+    filter "configurations:Release"
+        runtime "Release"
+        optimize "on"
